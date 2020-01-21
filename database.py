@@ -3,6 +3,8 @@ students = [
                 "id": "1",
                 "first_name": "Book One",
                 "last_name": "Juan Solo",
+                "create_time": 1545730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -11,6 +13,8 @@ students = [
                 "id": "2",
                 "first_name": "The First Sequel",
                 "last_name": "Duo Double",
+                "create_time": 1545730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -19,6 +23,8 @@ students = [
                 "id": "3",
                 "first_name": "Number Three",
                 "last_name": "Thria Threaded",
+                "create_time": 1545730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -27,6 +33,8 @@ students = [
                 "id": "4",
                 "first_name": "What comes after three?",
                 "last_name": "Arba",
+                "create_time": 1545730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -35,6 +43,8 @@ students = [
                 "id": "5",
                 "first_name": "Book One",
                 "last_name": "Juan Solo",
+                "create_time": 1545730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -43,6 +53,8 @@ students = [
                 "id": "6",
                 "first_name": "The First Sequel",
                 "last_name": "Duo Double",
+                "create_time": 1545730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -51,6 +63,8 @@ students = [
                 "id": "7",
                 "first_name": "Number Three",
                 "last_name": "Thria Threaded",
+                "create_time": 1555730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -59,6 +73,8 @@ students = [
                 "id": "8",
                 "first_name": "What comes after three?",
                 "last_name": "Arba",
+                "create_time": 1565730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -67,6 +83,8 @@ students = [
                 "id": "9",
                 "first_name": "Book One",
                 "last_name": "Juan Solo",
+                "create_time": 1575730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -75,6 +93,8 @@ students = [
                 "id": "10",
                 "first_name": "The First Sequel",
                 "last_name": "Duo Double",
+                "create_time": 1585730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -83,6 +103,8 @@ students = [
                 "id": "11",
                 "first_name": "Number Three",
                 "last_name": "Thria Threaded",
+                "create_time": 1585730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -91,6 +113,8 @@ students = [
                 "id": "12",
                 "first_name": "What comes after three?",
                 "last_name": "Arba",
+                "create_time": 1585730073,
+                "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
                 "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
@@ -223,3 +247,6 @@ interested_courses_count = [
         {"name": "Dating with magic",
         "count": 0}
     ]
+
+daily_signup_count = []
+monthly_signup_count = []

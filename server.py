@@ -1,8 +1,8 @@
 import json
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 from flask_cors import CORS
-from database import students, existing_skills_count, desired_skills_count, interested_courses_count
-
+from database import students, existing_skills_count, desired_skills_count, interested_courses_count, daily_signup_count, monthly_signup_count
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -75,28 +75,65 @@ def skills_data():
                 if type["skill"] == item["name"]:
                     item["count"] += 1
     
-
     for i in range(len(students)):
             existing_skills_loop(students[i]["existing_skills"])
             desired_skills_loop(students[i]["desired_skills"])
             interested_courses_loop(students[i]["interested_courses"])
-    return jsonify(existing_skills_count, desired_skills_count, interested_courses_count)
+            
+    return jsonify({"existing_skills_count": existing_skills_count}, {"desired_skills_count": desired_skills_count}, {"interested_courses_count": interested_courses_count})
 
 
-# #endpoint for search
-# @app.route('/search', methods=['GET', 'POST'])
-# def search():
-#     if request.method == "POST":
-#         results_students = []
-#         search_input = request.form['book']
-#         for b in students:
-#             if b["last_name"].find(search_input) != -1 or b["first_name"].find(search_input) != -1:
-#                 if len(results_students) < 5:
-#                     results_students.append(b)
-#         return render_template('search.html', data=results_students), 200
+@app.route('/api/signup-counts', methods=['GET'])
+def signup_counts():
+    def daily_signup_counts_loop(student):
+        if len(daily_signup_count) > 0:
+            for item in daily_signup_count:
+                student_day_object = datetime.fromtimestamp(student["create_time"])
+                item_day_object = datetime.fromtimestamp(item["date"])
+                if (student_day_object.day == item_day_object.day):
+                    item["count"] += 1
+                    return
+                else: 
+                    new_day = {
+                        "date": student["create_time"],
+                        "count": 1
+                    }
+                    return daily_signup_count.append(new_day)
+        else:
+            new_day = {
+                "date": student["create_time"],
+                "count": 1
+            }
+            return daily_signup_count.append(new_day)
 
-#     if request.method == "GET":
-#         return render_template('search.html', data=students), 200
+    def monthly_signup_counts_loop(student): 
+        if len(monthly_signup_count) > 0: 
+            for item in monthly_signup_count:            
+                student_month_object = datetime.fromtimestamp(student["create_time"])
+                item_month_object = datetime.fromtimestamp(item["date"])
+                if (student_month_object.month == item_month_object.month):
+                    item["count"] += 1
+                    return
+                else: 
+                    new_month = {
+                        "date": student["create_time"],
+                        "count": 1
+                    }
+                    return monthly_signup_count.append(new_month)
+        else:
+            new_month = {
+                "date": student["create_time"],
+                    "count": 1
+            }
+            return monthly_signup_count.append(new_month)
+
+    for i in range(len(students)):
+        daily_signup_counts_loop(students[i])
+        monthly_signup_counts_loop(students[i])
+
+            
+    return jsonify({"daily_signup_count": daily_signup_count}, {"monthly_signup_count": monthly_signup_count})
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=7000, debug=True)
