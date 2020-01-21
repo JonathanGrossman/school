@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Bamazon</title>
+  </head>
+  <body>
+    <div class="book">
+      <h4><a href="/" class="back"><- Back</a></h4>
+      <h1>{{book["title"]}}</h1>
+      <h2 class="book-subtitle">Written by: {{book["author"]}}</h2>
+      <h2 class="book-subtitle">{{book["pages"]}} pages</h2>
+      <button><a href="/edit-book/{{book["id"]}}"> Edit</a></button>
+      <button><a href="/delete-book/{{book["id"]}}">Delete</a></button>
+      </form>
+      <form action= method="post">
+        
+      </form>
+    </div>
+  </body>
+</html>

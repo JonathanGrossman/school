@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script type="text/javascript" src="/public/js/pairup.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Bamazon</title>
+  </head>
+  <body>
+    
+    <h3>
+      <div class="nav">
+        <a href="/add-book" class="nav-link">
+          Add a book
+        </a>
+        <a href="/search" class="nav-link">
+          Search for books
+        </a>
+      </div>
+      <h1 class="title">Hogwarts Library</h1>
+    </h3>
+    {% for book in books %}
+    <div>
+      <a href={{book["id"]}} class="book-title-link">{{ book["title"] }}</a>
+    </div>
+    {% endfor %}
+  </body>
+</html>

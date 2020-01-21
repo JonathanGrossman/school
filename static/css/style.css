@@ -1,0 +1,61 @@
+body {
+  background: lightslategray;
+}
+
+.nav {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+.nav-link {
+  color: navy;
+  font-size: 18px;
+  margin: 0 40px;
+  text-decoration: none;
+}
+
+.nav-link:visited {
+  color: navy;
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+}
+
+.book-title-link {
+  color: white;
+  font-size: 24px;
+  margin: 40px;
+  text-decoration: none;
+}
+
+.book-title-link:visited {
+  color: white;
+}
+
+.book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book-subtitle {
+  color: white;
+}
+
+.back {
+  color: red;
+  text-decoration: none;
+}
+
+.list-item {
+  margin: 40px;
+}
+
+.search-bar {
+  width: 70%;
+  margin: 40px;
+}

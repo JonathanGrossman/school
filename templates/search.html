@@ -1,0 +1,17 @@
+<!-- Search Bar -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <h1 class="title">Search Hogwarts Library</h1>
+    <form method="post" action="" >
+      <input type="text" placeholder="Search by author or title" name="book" class="search-bar" />
+      <button type="submit">Submit</button>
+    </form>
+    {% for item in data %}
+    <div class="list-item"><a href={{item["id"]}} class="book-title-link">{{item["title"]}} by {{item["author"]}}</a></div>
+    {% endfor %}
+  </body>
+</html>
