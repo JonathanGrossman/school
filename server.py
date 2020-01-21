@@ -1,106 +1,7 @@
 import json
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 from flask_cors import CORS
-
-
-students = [
-            {   
-                "id": "1",
-                "first_name": "Book One",
-                "last_name": "Juan Solo",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "2",
-                "first_name": "The First Sequel",
-                "last_name": "Duo Double",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "3",
-                "first_name": "Number Three",
-                "last_name": "Thria Threaded",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "4",
-                "first_name": "What comes after three?",
-                "last_name": "Arba",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {   
-                "id": "5",
-                "first_name": "Book One",
-                "last_name": "Juan Solo",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "6",
-                "first_name": "The First Sequel",
-                "last_name": "Duo Double",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "7",
-                "first_name": "Number Three",
-                "last_name": "Thria Threaded",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "8",
-                "first_name": "What comes after three?",
-                "last_name": "Arba",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {   
-                "id": "9",
-                "first_name": "Book One",
-                "last_name": "Juan Solo",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "10",
-                "first_name": "The First Sequel",
-                "last_name": "Duo Double",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "11",
-                "first_name": "Number Three",
-                "last_name": "Thria Threaded",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "12",
-                "first_name": "What comes after three?",
-                "last_name": "Arba",
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            }
-        ]
+from database import students, existing_skills_count, desired_skills_count, interested_courses_count
 
 
 app = Flask(__name__)
@@ -110,13 +11,16 @@ CORS(app)
 def hello_handler():
     return render_template('index.html', students=students)
 
+
 @app.route("/api/students", methods=["GET"])
 def students_handler():
     return jsonify(students)
 
+
 @app.route("/api/add-student", methods=["POST"])
 def post_book():
     return jsonify({"message": "suceess"})
+
 
 @app.route('/api/edit-student/<id>', methods=['GET', 'POST'])
 def edit_book(id):
@@ -149,6 +53,34 @@ def single_bookid(id):
     for student in students:
         if student["id"] == id:
             return jsonify(student)
+
+
+@app.route('/api/skills-data', methods=['GET'])
+def skills_data():
+    def existing_skills_loop(skills):
+        for type in skills:
+            for item in existing_skills_count:
+                if type["skill"] == item["name"]:
+                    item["count"] += 1
+    
+    def desired_skills_loop(skills):
+        for type in skills:
+            for item in desired_skills_count:
+                if type["skill"] == item["name"]:
+                    item["count"] += 1
+    
+    def interested_courses_loop(skills):
+        for type in skills:
+            for item in interested_courses_count:
+                if type["skill"] == item["name"]:
+                    item["count"] += 1
+    
+
+    for i in range(len(students)):
+            existing_skills_loop(students[i]["existing_skills"])
+            desired_skills_loop(students[i]["desired_skills"])
+            interested_courses_loop(students[i]["interested_courses"])
+    return jsonify(existing_skills_count, desired_skills_count, interested_courses_count)
 
 
 # #endpoint for search
