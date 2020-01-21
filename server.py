@@ -86,11 +86,11 @@ def skills_data():
 @app.route('/api/signup-counts', methods=['GET'])
 def signup_counts():
     def daily_signup_counts_loop(student):
+        student_dt_object = datetime.fromtimestamp(student["create_time"])
         if len(daily_signup_count) > 0:
             for item in daily_signup_count:
-                student_day_object = datetime.fromtimestamp(student["create_time"])
                 item_day_object = datetime.fromtimestamp(item["date"])
-                if (student_day_object.day == item_day_object.day):
+                if (student_dt_object.day == item_day_object.day):
                     item["count"] += 1
                     return
                 else: 
@@ -104,14 +104,14 @@ def signup_counts():
                 "date": student["create_time"],
                 "count": 1
             }
-            return daily_signup_count.append(new_day)
+            daily_signup_count.append(new_day)
 
     def monthly_signup_counts_loop(student): 
+        student_dt_object = datetime.fromtimestamp(student["create_time"])
         if len(monthly_signup_count) > 0: 
             for item in monthly_signup_count:            
-                student_month_object = datetime.fromtimestamp(student["create_time"])
                 item_month_object = datetime.fromtimestamp(item["date"])
-                if (student_month_object.month == item_month_object.month):
+                if (student_dt_object.month == item_month_object.month):
                     item["count"] += 1
                     return
                 else: 
