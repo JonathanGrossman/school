@@ -7,10 +7,6 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
-def hello_handler():
-    return render_template('index.html', students=students)
-
 
 @app.route("/api/students", methods=["GET"])
 def students_handler():
@@ -22,7 +18,6 @@ def students_handler():
 def post_student():
     new_student = request.get_json()
     students.append(new_student)
-    print(students)
     return jsonify({"message": "success"})
 
 
@@ -128,6 +123,9 @@ def signup_counts():
         monthly_signup_counts_loop(students[i])      
     return jsonify({"daily_signup_count": daily_signup_count}, {"monthly_signup_count": monthly_signup_count})
 
+@app.route("/")
+def hello_handler():
+    return render_template('index.html', students=students)
 
 if __name__ == "__main__":
     app.run(host="localhost", port=7000, debug=True)
