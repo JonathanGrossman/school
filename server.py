@@ -92,53 +92,40 @@ def skills_data():
 
 @app.route('/api/signup-counts', methods=['GET'])
 def signup_counts():
+    daily_signup_count = []
+    daily_signup_count = []
     def daily_signup_counts_loop(student):
         student_dt_object = datetime.fromtimestamp(student["create_time"])
-        if len(daily_signup_count) > 0:
-            for item in daily_signup_count:
-                item_day_object = datetime.fromtimestamp(item["date"])
-                if (student_dt_object.day == item_day_object.day):
+        if len(daily_signup_count) > 0: 
+            for item in daily_signup_count:            
+                item_month_object = datetime.fromtimestamp(item["date"])
+                if (student_dt_object.day == item_month_object.day and student_dt_object.month == item_month_object.month and student_dt_object.year == item_month_object.year):
                     item["count"] += 1
                     return
-                else: 
-                    new_day = {
-                        "date": student["create_time"],
-                        "count": 1
-                    }
-                    return daily_signup_count.append(new_day)
-        else:
-            new_day = {
+        new_month = {
                 "date": student["create_time"],
                 "count": 1
-            }
-            daily_signup_count.append(new_day)
+        }
+        daily_signup_count.append(new_month)
+        return daily_signup_count
 
     def monthly_signup_counts_loop(student): 
         student_dt_object = datetime.fromtimestamp(student["create_time"])
         if len(monthly_signup_count) > 0: 
             for item in monthly_signup_count:            
                 item_month_object = datetime.fromtimestamp(item["date"])
-                if (student_dt_object.month == item_month_object.month):
+                if (student_dt_object.month == item_month_object.month and student_dt_object.year == item_month_object.year):
                     item["count"] += 1
                     return
-                else: 
-                    new_month = {
-                        "date": student["create_time"],
-                        "count": 1
-                    }
-                    return monthly_signup_count.append(new_month)
-        else:
-            new_month = {
+        new_month = {
                 "date": student["create_time"],
-                    "count": 1
-            }
-            return monthly_signup_count.append(new_month)
-
+                "count": 1
+        }
+        monthly_signup_count.append(new_month)
+        return monthly_signup_count
     for i in range(len(students)):
         daily_signup_counts_loop(students[i])
-        monthly_signup_counts_loop(students[i])
-
-            
+        monthly_signup_counts_loop(students[i])      
     return jsonify({"daily_signup_count": daily_signup_count}, {"monthly_signup_count": monthly_signup_count})
 
 
