@@ -37,7 +37,6 @@ def delete_student(id):
         data = request.get_json()
         for student in students:
             if student["id"] == id:
-                print(student["id"])
                 students.remove(student)
         return jsonify({"message": "success"})
     else:
@@ -46,13 +45,18 @@ def delete_student(id):
 
 @app.route('/api/skills-data', methods=['GET'])
 def skills_data():
-    global students
+    for item in existing_skills_count:
+        item["count"] = 0
+    for item in desired_skills_count:
+        item["count"] = 0
+    for item in interested_courses_count:
+        item["count"] = 0
     def existing_skills_loop(skills):
         for type in skills:
             for item in existing_skills_count:
                 if type["skill"] == item["name"]:
                     item["count"] += 1
-        return
+        return existing_skills_count
     
     def desired_skills_loop(skills):
         for type in skills:
@@ -69,10 +73,9 @@ def skills_data():
         return
     
     for i in range(len(students)):
-            existing_skills_loop(students[i]["existing_skills"])
-            desired_skills_loop(students[i]["desired_skills"])
-            interested_courses_loop(students[i]["interested_courses"])
-            
+        existing_skills_loop(students[i]["existing_skills"])
+        desired_skills_loop(students[i]["desired_skills"])
+        interested_courses_loop(students[i]["interested_courses"])         
     return jsonify({"existing_skills_count": existing_skills_count}, {"desired_skills_count": desired_skills_count}, {"interested_courses_count": interested_courses_count})
 
 
@@ -80,7 +83,7 @@ def skills_data():
 def signup_counts():
     global students
     daily_signup_count = []
-    daily_signup_count = []
+    monthly_signup_count = []
     def daily_signup_counts_loop(student):
         student_dt_object = datetime.fromtimestamp(student["create_time"])
         if len(daily_signup_count) > 0: 
@@ -89,9 +92,10 @@ def signup_counts():
                 if (student_dt_object.day == item_month_object.day and student_dt_object.month == item_month_object.month and student_dt_object.year == item_month_object.year):
                     item["count"] += 1
                     return
+        
         new_month = {
-                "date": student["create_time"],
-                "count": 1
+            "date": student["create_time"],
+            "count": 1
         }
         daily_signup_count.append(new_month)
         return daily_signup_count
@@ -118,7 +122,7 @@ def signup_counts():
 @app.route("/")
 def hello_handler():
     global students
-    return render_template('index.html', students=students)
+    return render_template('index.html')
 
 @app.route("/api/students", methods=["GET"])
 def students_handler():
