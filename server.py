@@ -10,6 +10,7 @@ CORS(app)
 
 @app.route("/api/add-student", methods=["POST"])
 def post_student():
+    global students
     new_student = request.get_json()
     students.append(new_student)
     return jsonify({"message": "success"})
@@ -17,6 +18,7 @@ def post_student():
 
 @app.route('/api/edit-student/<id>', methods=['GET', 'POST'])
 def edit_student(id):
+    global students
     if request.method == "POST":
         for student in students:
             if student["id"] == id:
@@ -30,6 +32,7 @@ def edit_student(id):
 
 @app.route('/api/delete-student/<id>', methods=['GET', 'POST'])
 def delete_student(id):
+    global students
     if request.method == "POST":
         data = request.get_json()
         for student in students:
@@ -43,6 +46,7 @@ def delete_student(id):
 
 @app.route('/api/skills-data', methods=['GET'])
 def skills_data():
+    global students
     def existing_skills_loop(skills):
         for type in skills:
             for item in existing_skills_count:
@@ -74,6 +78,7 @@ def skills_data():
 
 @app.route('/api/signup-counts', methods=['GET'])
 def signup_counts():
+    global students
     daily_signup_count = []
     daily_signup_count = []
     def daily_signup_counts_loop(student):
@@ -112,15 +117,18 @@ def signup_counts():
 
 @app.route("/")
 def hello_handler():
+    global students
     return render_template('index.html', students=students)
 
 @app.route("/api/students", methods=["GET"])
 def students_handler():
+    global students
     sorted_students = sorted(students, key=lambda k: k['last_name'])
     return jsonify(sorted_students)
 
 @app.route("/<id>", methods=["GET"])
 def single_studentid(id):
+    global students
     for student in students:
         if student["id"] == id:
             return jsonify(student)
