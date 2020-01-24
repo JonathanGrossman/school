@@ -14,42 +14,46 @@ def hello_handler():
 
 @app.route("/api/students", methods=["GET"])
 def students_handler():
-    return jsonify(students)
+    sorted_students = sorted(students, key=lambda k: k['last_name'])
+    return jsonify(sorted_students)
 
 
 @app.route("/api/add-student", methods=["POST"])
-def post_book():
-    return jsonify({"message": "suceess"})
+def post_student():
+    new_student = request.get_json()
+    students.append(new_student)
+    print(students)
+    return jsonify({"message": "success"})
 
 
 @app.route('/api/edit-student/<id>', methods=['GET', 'POST'])
-def edit_book(id):
+def edit_student(id):
     if request.method == "POST":
         for student in students:
             if student["id"] == id:
                 students.remove(student)
-                data =  request.get_json()
-                students.append(data)
-        return jsonify({"message": "suceess"})
+                updated_student =  request.get_json()
+                students.append(updated_student)
+        return jsonify({"message": "success"})
     else:
         return jsonify({"message": "error"})
 
 
 @app.route('/api/delete-student/<id>', methods=['GET', 'POST'])
-def delete_book(id):
+def delete_student(id):
     if request.method == "POST":
-        data =  request.get_json()
+        data = request.get_json()
         for student in students:
             if student["id"] == id:
-                if student["first_name"] == data["first_name"]:
-                    students.remove(student)
-        return jsonify({"message": "suceess"})
+                print(student["id"])
+                students.remove(student)
+        return jsonify({"message": "success"})
     else:
         return jsonify({"message": "error"})
 
 
 @app.route("/<id>", methods=["GET"])
-def single_bookid(id):
+def single_studentid(id):
     for student in students:
         if student["id"] == id:
             return jsonify(student)
@@ -62,18 +66,21 @@ def skills_data():
             for item in existing_skills_count:
                 if type["skill"] == item["name"]:
                     item["count"] += 1
+        return
     
     def desired_skills_loop(skills):
         for type in skills:
             for item in desired_skills_count:
                 if type["skill"] == item["name"]:
                     item["count"] += 1
+        return
     
     def interested_courses_loop(skills):
         for type in skills:
             for item in interested_courses_count:
                 if type["skill"] == item["name"]:
                     item["count"] += 1
+        return
     
     for i in range(len(students)):
             existing_skills_loop(students[i]["existing_skills"])

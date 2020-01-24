@@ -1,58 +1,58 @@
 students = [
             {   
                 "id": "1",
-                "first_name": "Book One",
-                "last_name": "Juan Solo",
+                "first_name": "Harry",
+                "last_name": "Potter",
                 "create_time": 1545730073,
                 "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
+                "desired_skills": [{"skill": "Animation", "level": "1"}],
+                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}, {"skill": "Alchemy advanced", "level": "4"}, {"skill": "Dating with magic", "level": "1"}]
             },
             {
                 "id": "2",
-                "first_name": "The First Sequel",
-                "last_name": "Duo Double",
+                "first_name": "Hermione",
+                "last_name": "Granger",
                 "create_time": 1545730073,
                 "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
+                "existing_skills": [{"skill": "Conjuror", "level": "1"}],
+                "desired_skills": [{"skill": "Alchemy", "level": "1"}, {"skill": "Possession", "level": "2"}, {"skill": "Poison", "level": "3"}],
+                "interested_courses": [{"skill": "Alchemy advanced", "level": "1"}]
             },
             {
                 "id": "3",
-                "first_name": "Number Three",
-                "last_name": "Thria Threaded",
+                "first_name": "Rodney",
+                "last_name": "Dangerfield",
                 "create_time": 1545730073,
                 "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
+                "existing_skills": [{"skill": "Alchemy", "level": "1"}, {"skill": "Omnipresent", "level": "5"}, {"skill": "Necromancer", "level": "4"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
+                "interested_courses": [{"skill": "Dating with magic", "level": "1"}]
             },
             {
                 "id": "4",
-                "first_name": "What comes after three?",
-                "last_name": "Arba",
+                "first_name": "Jerry",
+                "last_name": "Seinfeld",
                 "create_time": 1545730073,
                 "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
+                "interested_courses": [{"skill": "Magic for medical professionals", "level": "1"}, {"skill": "Alchemy advanced", "level": "3"}]
             },
             {   
                 "id": "5",
-                "first_name": "Book One",
-                "last_name": "Juan Solo",
+                "first_name": "Chris",
+                "last_name": "Rock",
                 "create_time": 1545730073,
                 "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
+                "existing_skills": [{"skill": "Alchemy", "level": "1"}, {"skill": "Poison", "level": "1"}],
+                "desired_skills": [{"skill": "Animation", "level": "1"}, {"skill": "Possession", "level": "1"}],
+                "interested_courses": [{"skill": "Magic for medical professionals", "level": "1"}]
             },
             {
                 "id": "6",
-                "first_name": "The First Sequel",
-                "last_name": "Duo Double",
+                "first_name": "Anthony",
+                "last_name": "Jeselnik",
                 "create_time": 1545730073,
                 "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
@@ -61,63 +61,13 @@ students = [
             },
             {
                 "id": "7",
-                "first_name": "Number Three",
-                "last_name": "Thria Threaded",
+                "first_name": "Tiffany",
+                "last_name": "Haddish",
                 "create_time": 1555730073,
                 "update_time": 1545730073,
                 "existing_skills": [{"skill": "Alchemy", "level": "1"}],
                 "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "8",
-                "first_name": "What comes after three?",
-                "last_name": "Arba",
-                "create_time": 1565730073,
-                "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {   
-                "id": "9",
-                "first_name": "Book One",
-                "last_name": "Juan Solo",
-                "create_time": 1575730073,
-                "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "10",
-                "first_name": "The First Sequel",
-                "last_name": "Duo Double",
-                "create_time": 1585730073,
-                "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "11",
-                "first_name": "Number Three",
-                "last_name": "Thria Threaded",
-                "create_time": 1585730073,
-                "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
-            },
-            {
-                "id": "12",
-                "first_name": "What comes after three?",
-                "last_name": "Arba",
-                "create_time": 1585730073,
-                "update_time": 1545730073,
-                "existing_skills": [{"skill": "Alchemy", "level": "1"}],
-                "desired_skills": [{"skill": "Alchemy", "level": "1"}],
-                "interested_courses": [{"skill": "Alchemy basics", "level": "1"}]
+                "interested_courses": [{"skill": "Alchemy advanced", "level": "1"}]
             }
         ]
 
