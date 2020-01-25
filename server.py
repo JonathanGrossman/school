@@ -4,26 +4,9 @@ from flask_cors import CORS
 from database import students, existing_skills_count, desired_skills_count, interested_courses_count, daily_signup_count, monthly_signup_count
 from datetime import datetime
 
+
 app = Flask(__name__)
 CORS(app)
-
-
-@app.route("/")
-def hello_handler():
-    return render_template('index.html')
-
-
-@app.route("/api/students", methods=["GET"])
-def students_handler():
-    sorted_students = sorted(students, key=lambda k: k['last_name'])
-    return jsonify(sorted_students)
-
-
-@app.route("/<id>", methods=["GET"])
-def single_studentid(id):
-    for student in students:
-        if student["id"] == id:
-            return jsonify(student)
 
 
 @app.route("/api/add-student", methods=["POST"])
@@ -56,6 +39,24 @@ def delete_student(id):
         return jsonify({"message": "success"})
     else:
         return jsonify({"message": "error"})
+
+
+@app.route("/")
+def hello_handler():
+    return render_template('index.html')
+
+
+@app.route("/api/students", methods=["GET"])
+def students_handler():
+    sorted_students = sorted(students, key=lambda k: k['last_name'])
+    return jsonify(sorted_students)
+
+
+@app.route("/<id>", methods=["GET"])
+def single_studentid(id):
+    for student in students:
+        if student["id"] == id:
+            return jsonify(student)
 
 
 @app.route('/api/skills-data', methods=['GET'])
