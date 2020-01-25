@@ -97,8 +97,10 @@ def skills_data():
 @app.route('/api/signup-counts', methods=['GET'])
 def signup_counts():
     global students
-    daily_signup_count = []
-    monthly_signup_count = []
+    for item in daily_signup_count:
+        item["count"] = 0
+    for item in monthly_signup_count:
+        item["count"] = 0
     def daily_signup_counts_loop(student):
         student_dt_object = datetime.fromtimestamp(student["create_time"])
         if len(daily_signup_count) > 0: 
