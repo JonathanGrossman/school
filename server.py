@@ -9,6 +9,24 @@ app = Flask(__name__)
 CORS(app)
 
 
+@app.route("/")
+def hello_handler():
+    return render_template('index.html')
+
+
+@app.route("/api/students", methods=["GET"])
+def students_handler():
+    sorted_students = sorted(students, key=lambda k: k['last_name'])
+    return jsonify(sorted_students)
+
+
+@app.route("/<id>", methods=["GET"])
+def single_studentid(id):
+    for student in students:
+        if student["id"] == id:
+            return jsonify(student)
+
+
 @app.route("/api/add-student", methods=["POST"])
 def post_student():
     new_student = request.get_json()
@@ -39,24 +57,6 @@ def delete_student(id):
         return jsonify({"message": "success"})
     else:
         return jsonify({"message": "error"})
-
-
-@app.route("/")
-def hello_handler():
-    return render_template('index.html')
-
-
-@app.route("/api/students", methods=["GET"])
-def students_handler():
-    sorted_students = sorted(students, key=lambda k: k['last_name'])
-    return jsonify(sorted_students)
-
-
-@app.route("/<id>", methods=["GET"])
-def single_studentid(id):
-    for student in students:
-        if student["id"] == id:
-            return jsonify(student)
 
 
 @app.route('/api/skills-data', methods=['GET'])
@@ -140,4 +140,3 @@ def signup_counts():
 
 if __name__ == "__main__":
     app.run(host="localhost", port=7000, debug=True)
-    # comment
